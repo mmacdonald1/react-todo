@@ -23,16 +23,24 @@ class App extends Component {
   }
   changeText  = (e) => {
     this.setState({text: e.target.value});
-  };
+  }
 
   onChange = () => {
-    console.log("changing text")
-  };
+    console.log('changing text')
+  }
+
+  onSubmit = (e) =>{
+    e.preventDefault();
+    console.log(e.target.text.value);
+  }
 
   render() {
     return (
       <div className="App">
-        <TodoForm />
+        <TodoForm
+          onChange = {this.onChange}
+          onSubmit = {this.onSubmit}
+         />
         <TodoList todos= {this.state.todos} />
       </div>
     );
