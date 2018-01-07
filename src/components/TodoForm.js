@@ -5,7 +5,7 @@ const TodoForm = () =>
   <form>
     <div className= "from-group">
       <label> Todo text </label>
-      <input type="text" ref="text" onChange={this.onChange} />
+      <input type="text" onChange={this.onChange} />
     </div>
   </form>
 </div>
