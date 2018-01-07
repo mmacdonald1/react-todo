@@ -1,33 +1,43 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 import './App.css';
 
 class App extends Component {
   state ={
-    text:'Hello World'
-  }
-  render() {
-    return (
-      <div className="App">
-        <h1>{this.state.text}</h1>
-        <form>
-            <input type ="text" onChange={this.changeText} value={this.state.text} />
-            <button onClick={this.changeText} className="btn btn-primary"> Click </button>
-        </form>
-        <br />
-        <ComponentTwo text= {this.state.text} />
-      </div>
-    );
+    text:'',
+    todos:[
+      {
+        id:1,
+        text: 'Meeting At Work'
+      },
+      {
+        id:2,
+        text: 'Bring Kids To School'
+      },
+      {
+        id:3,
+        text: 'Food Shopping'
+      }
+    ]
   }
   changeText  = (e) => {
     this.setState({text: e.target.value});
+  };
+
+  onChange = () => {
+    console.log("changing text")
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <TodoForm />
+        <TodoList todos= {this.state.todos} />
+      </div>
+    );
   }
 }
-
-const ComponentTwo = props =>
-      <div>
-      {props.text}
-      </div>;
 
 
 
