@@ -3,19 +3,32 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state ={
+    text:'Hello World'
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>{this.state.text}</h1>
+        <form>
+            <input type ="text" onChange={this.changeText} value={this.state.text} />
+            <button onClick={this.changeText} className="btn btn-primary"> Click </button>
+        </form>
+        <br />
+        <ComponentTwo text= {this.state.text} />
       </div>
     );
   }
+  changeText  = (e) => {
+    this.setState({text: e.target.value});
+  }
 }
+
+const ComponentTwo = props =>
+      <div>
+      {props.text}
+      </div>;
+
+
 
 export default App;
