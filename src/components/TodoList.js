@@ -4,8 +4,8 @@ const TodoList = props =>
       <div>
         <ul className="list-group">
           {
-            props.todos.map(todo =>{
-              return <li className="list-group-item" todo={todo} key={todo.id}>{todo.text}</li>
+            props.todos.map((todo, index) =>{
+              return (<li key={index}> {todo.text}</li>)
             })
           }
         </ul>

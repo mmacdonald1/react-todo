@@ -4,23 +4,13 @@ import TodoList from "./components/TodoList";
 import './App.css';
 
 class App extends Component {
-  state ={
+constructor(){
+  super();
+  this.state ={
     text:'',
-    todos:[
-      {
-        id:1,
-        text: 'Meeting At Work'
-      },
-      {
-        id:2,
-        text: 'Bring Kids To School'
-      },
-      {
-        id:3,
-        text: 'Food Shopping'
-      }
-    ]
+    todos:[]
   }
+}
   changeText  = (e) => {
     this.setState({text: e.target.value});
   }
@@ -29,9 +19,17 @@ class App extends Component {
     console.log('changing text')
   }
 
-  onSubmit = (e) =>{
-    e.preventDefault();
-    console.log(e.target.text.value);
+  onSubmit () {
+
+    const todos = this.state.todos;
+    const newTodo = {text: this.state.text};
+    todos.push(newTodo);
+    this.setState({todos: todos});
+
+  }
+
+  doStuff = value => {
+    console.log('derp ', value);
   }
 
   render() {
@@ -40,6 +38,7 @@ class App extends Component {
         <TodoForm
           onChange = {this.onChange}
           onSubmit = {this.onSubmit}
+          doStuff = {(value) => this.doStuff(value)}
          />
         <TodoList todos= {this.state.todos} />
       </div>
